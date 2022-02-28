@@ -29,3 +29,7 @@
 ## use local gitleaks config file
 
 create .gitleaks.toml on root of project
+
+# skip - use `SKIP=1`
+
+` SKIP=1 git commit -m "xx"`

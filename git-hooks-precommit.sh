@@ -1,7 +1,11 @@
 # -*- coding: utf-8 -*
 
-if [ -f ".gitleaks.toml" ]; then
-  gitleaks protect --staged -v
+if [ "${SKIP}x" == "1x" ]; then
+	echo "skip gitleask"
 else
-  gitleaks protect --staged -v -c .git/hooks/gitleaks.toml
+	if [ -f ".gitleaks.toml" ]; then
+	  gitleaks protect --staged -v
+	else
+	  gitleaks protect --staged -v -c .git/hooks/gitleaks.toml
+	fi
 fi
