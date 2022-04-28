@@ -10,8 +10,9 @@
     ```bash
    https://github.com/coder-standard/git-hooks.git
    cd git-hooks
-   ./install-tools.sh
+   ./install-tools.sh 参数
    ```
+   > 参数：加入PATH中的目录，例如 /e/bins
 4. install hooks
    1. install hooks for local project
        ```bash

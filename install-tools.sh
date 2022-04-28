@@ -8,9 +8,15 @@ while [ -h "$SOURCE"  ]; do # resolve $SOURCE until the file is no longer a syml
 done
 DIR="$( cd -P "$( dirname "$SOURCE"  )" && pwd  )"
 
-cat > /usr/bin/install-git-hooks.sh <<-EOF
+install_path=/usr/bin
+if [[ $# -eq 1 ]]; then
+  install_path=$1
+fi
+
+
+cat > $install_path/install-git-hooks.sh <<-EOF
 #!/bin/bash
 python $DIR/install-git-hooks.py \$@
 EOF
 
-chmod +x /usr/bin/install-git-hooks.sh
+chmod +x $install_path/install-git-hooks.sh
