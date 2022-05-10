@@ -7,6 +7,7 @@ import logging
 import shutil
 from distutils.spawn import find_executable
 
+
 logging.basicConfig(level=logging.DEBUG)
 
 globalFlag = False
@@ -96,11 +97,14 @@ with open(preCommitFile, 'r', encoding='utf-8') as f:
                 hasInstalled = True
                 break
 
+os.popen("chmod +x " + preCommitFile)
+
 if hasInstalled:
     logging.critical("has installed")
 else:
-    shutil.copyfile(os.path.join(root, "git-hooks-precommit.sh"), os.path.join(hooks_dir, "git-hooks-precommit.sh"))
-    shutil.copyfile(os.path.join(root, ".gitleaks.toml"), os.path.join(hooks_dir, "gitleaks.toml"))
+    shutil.copyfile(os.path.join(workDir, "git-hooks-precommit.sh"), os.path.join(hooks_dir, "git-hooks-precommit.sh"))
+    os.popen("chmod +x " + os.path.join(hooks_dir, "git-hooks-precommit.sh"))
+    shutil.copyfile(os.path.join(workDir, ".gitleaks.toml"), os.path.join(hooks_dir, "gitleaks.toml"))
     with open(preCommitFile, 'a', encoding='utf-8') as f:
         f.write("\n"+gitHooksPyFile+"\n")
 

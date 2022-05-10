@@ -16,7 +16,7 @@ fi
 
 cat > $install_path/install-git-hooks.sh <<-EOF
 #!/bin/bash
-python $DIR/install-git-hooks.py \$@
+python3 $DIR/install-git-hooks.py \$@
 EOF
 
 chmod +x $install_path/install-git-hooks.sh
